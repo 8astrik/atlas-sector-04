@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>ATLAS // SECTOR 04 — Visual Concept</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/build/three.module.js",
+        "three/addons/": "./vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="scene"></canvas>
+
+    <div id="vignette"></div>
+    <div id="scanlines"></div>
+    <div id="grain"></div>
+
+    <i class="frame-mark tl"></i>
+    <i class="frame-mark tr"></i>
+    <i class="frame-mark bl"></i>
+    <i class="frame-mark br"></i>
+
+    <div id="hud">
+      <div id="mission" class="hud-panel">
+        <div class="eyebrow">Задача 01 · Энергоузел</div>
+        <div class="mission-line" id="objective">Восстановить питание шлюза</div>
+        <div class="mission-sub">
+          <span>ЭНЕРГОЯЧЕЙКИ</span>
+          <strong><span id="cell-count">0</span> / 3</strong>
+        </div>
+        <div class="mission-progress">
+          <i></i><i></i><i></i>
+        </div>
+      </div>
+
+      <div id="telemetry" class="hud-panel">
+        <div class="eyebrow">Сектор 04 · Связь</div>
+        <div class="tel-row" style="margin-top: 6px;">
+          <span>ATMOSPHERE</span><b class="ok">NOMINAL</b>
+          <span class="tel-bars"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <div class="tel-row">
+          <span>REACTOR</span><b class="warn" id="reactor-state">OFFLINE</b>
+        </div>
+        <div class="tel-row">
+          <span>UPLINK</span><b>STABLE · 98%</b>
+        </div>
+      </div>
+
+      <div id="vitals" class="hud-panel">
+        <div class="eyebrow">Скафандр · MK-IV</div>
+        <div class="vital">
+          <div class="vital-head"><span>O₂</span><b>98%</b></div>
+          <div class="vital-bar" style="--w: 98%"><i></i></div>
+        </div>
+        <div class="vital">
+          <div class="vital-head"><span>ЦЕЛОСТНОСТЬ</span><b>100%</b></div>
+          <div class="vital-bar amber" style="--w: 100%"><i></i></div>
+        </div>
+      </div>
+
+      <div id="reserve" class="hud-panel">
+        <div class="eyebrow" style="justify-content: flex-end;">Энергорезерв</div>
+        <div class="reserve-main">
+          <div class="reserve-count"><b id="reserve-count">0</b><span>/3</span></div>
+        </div>
+        <div class="cell-pips">
+          <i></i><i></i><i></i>
+        </div>
+        <div class="reserve-foot">PWR.CELL // MK-II · НЕЙТРАЛЬНЫЙ ЗАРЯД</div>
+      </div>
+
+      <div id="cam-tag"><i class="rec"></i><span>CAM 01 · SEC-04 · LIVE</span></div>
+      <div id="concept-tag">ВИЗУАЛЬНЫЙ КОНЦЕПТ · EARLY GREYBOX LOOK · НЕ ИГРОВОЙ БИЛД</div>
+
+      <div id="reticle">
+        <i class="r-ring"></i>
+        <i class="r-tick r-t"></i>
+        <i class="r-tick r-b"></i>
+        <i class="r-tick r-l"></i>
+        <i class="r-tick r-r"></i>
+        <i class="r-dot"></i>
+      </div>
+
+      <div id="prompt">
+        <span class="key" id="prompt-key">E</span>
+        <span class="prompt-text" id="prompt-text">Извлечь энергоячейку</span>
+      </div>
+
+      <div id="toast">Система готова</div>
+
+      <div id="controls">
+        WASD — ДВИЖЕНИЕ · МЫШЬ — ОБЗОР · E — ВЗАИМОДЕЙСТВИЕ · SHIFT — БЕГ · ESC — КУРСОР
+      </div>
+    </div>
+
+    <div id="start">
+      <div class="start-inner">
+        <div class="start-eyebrow">Concept visual · sector 04</div>
+        <h1 class="start-title">ATLAS</h1>
+        <div class="start-sub">энергоузел · шлюз 04</div>
+        <div class="start-rule"></div>
+        <p class="start-copy">
+          Небольшая комната, тяжёлый шлюз и три энергоячейки.
+          Вид от первого лица, простая геометрия, базовые материалы.
+        </p>
+        <button class="start-btn" id="start-btn" type="button">Войти в сектор</button>
+        <div class="start-controls">
+          <span><b>WASD</b> движение</span>
+          <span><b>МЫШЬ</b> обзор</span>
+          <span><b>E</b> действие</span>
+          <span><b>SHIFT</b> бег</span>
+        </div>
+        <div class="start-note">визуальный концепт · не игровой билд</div>
+      </div>
+    </div>
+
+    <div id="pause">
+      <div class="pause-inner">
+        <div class="pause-title">Связь с сектором приостановлена</div>
+        <div class="pause-sub">Нажмите, чтобы продолжить</div>
+        <button class="pause-btn" id="resume-btn" type="button">Продолжить</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
